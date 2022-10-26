@@ -1,9 +1,12 @@
 import Image from "next/image";
 import { Team } from "../../lib/types/bracket";
 
-const Card = ({ team }: { team: Team }) => {
+const Card = ({ team, onClick }: { team: Team; onClick: () => void }) => {
   return (
-    <div className="bg-gray-800 py-4 px-3 flex rounded-md m-1">
+    <div
+      className="bg-gray-800 py-4 px-3 flex rounded-md m-1"
+      onClick={onClick}
+    >
       <div className="image w-16 h-16 bg-green-100 rounded-full overflow-hidden">
         <Image
           width={100}
@@ -13,8 +16,8 @@ const Card = ({ team }: { team: Team }) => {
           className="w-full h-full object-cover"
         />
       </div>
-      <div className="bg-orange-300 flex-1 mx-2 p-2">
-        <h3>{team.name}</h3>
+      <div className="flex-1 mx-2 p-2">
+        <h3 className="text-sm">{team.name}</h3>
       </div>
     </div>
   );

@@ -23,7 +23,7 @@ const BracketBoard = ({ teams }: { teams: Team[] }) => {
   return (
     <div className="p-4 bg-black w-full">
       {groups && (
-        <div className="grid grid-cols-2">
+        <div className="grid grid-cols-2 min-h-[600px]">
           <BracketGroupContainer teams={groups.groupOne} />
           <BracketGroupContainer teams={groups.groupTwo} />
         </div>
