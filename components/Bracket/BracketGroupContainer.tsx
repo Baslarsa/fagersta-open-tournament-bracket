@@ -1,113 +1,54 @@
 import { useState } from "react";
 import { groupTeams } from "../../lib/generateRandomizedGroups";
-import { Team } from "../../lib/types/bracket";
-import Card from "../Card";
+import { bracket, Results, Team } from "../../lib/types/bracket";
+import { motion } from "framer-motion";
+import Match from "./Match";
 
-type Results = {
-  quarterFinal: Team[];
-  semiFinal: Team[];
-  final: Team[];
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 1,
+    },
+  },
 };
 
-const BracketGroupContainer = ({
-  teams,
-  mirror,
-}: {
-  teams: Team[];
-  mirror?: boolean;
-}) => {
-  const matches = groupTeams(teams, 2);
-  const [winners, setWinners] = useState<Results>({
-    quarterFinal: [],
-    semiFinal: [],
-    final: [],
-  });
+const item = {
+  hidden: { opacity: 0, x: -100 },
+  show: { opacity: 1, x: 0 },
+};
 
-  console.log(winners.quarterFinal);
-
+const BracketGroupContainer = () => {
+  const quarterFinals = bracket[0].matches;
+  const semiFinals = bracket[1].matches;
+  const final = bracket[2].matches;
   return (
-    <div className={`bg-yellow-500 grid grid-cols-3`}>
-      <div className="flex flex-col justify-center">
-        {matches.map((match, i) => (
-          <Heat
-            match={match}
-            winners={winners}
-            setWinner={setWinners}
-            stage={"quarterFinal"}
-          />
+    <motion.div
+      className={`grid grid-cols-4`}
+      variants={container}
+      initial="hidden"
+      animate="show"
+    >
+      <motion.div className={`flex flex-col justify-evenly`} variants={item}>
+        {quarterFinals.map((match, i) => (
+          <Match match={match} />
         ))}
-      </div>
-      <div className="flex flex-col justify-center">
-        {winners?.quarterFinal.map((match: Team) => {
-          return (
-            <Heat
-              match={[match]}
-              winners={winners}
-              setWinner={setWinners}
-              stage={"semiFinal"}
-            />
-          );
-        })}
-      </div>
-      <div className="flex flex-col justify-center">
-        {winners?.semiFinal.map((match: Team) => {
-          return (
-            <Heat
-              match={[match]}
-              winners={winners}
-              setWinner={setWinners}
-              stage={"final"}
-            />
-          );
-        })}
-      </div>
-    </div>
-  );
-};
-
-const Heat = ({
-  match,
-  winners,
-  setWinner,
-  stage,
-}: {
-  match: Team[];
-  winners: Results;
-  setWinner: (value: Results) => void;
-  stage: string;
-}) => {
-  const handleClick = (team: Team) => {
-    switch (stage) {
-      case "quarterFinal":
-        if (winners.quarterFinal.length < 2) {
-          return setWinner({
-            ...winners,
-            quarterFinal: [...winners.quarterFinal, team],
-          });
-        }
-      case "semiFinal":
-        if (winners.semiFinal.length < 1) {
-          return setWinner({
-            ...winners,
-            semiFinal: [...winners.semiFinal, team],
-          });
-        }
-      case "final":
-        if (winners.final.length < 1) {
-          return setWinner({
-            ...winners,
-            final: [...winners.final, team],
-          });
-        }
-    }
-  };
-
-  return (
-    <div className={`bg-pink-400 p-2 m-1 flex flex-col justify-center`}>
-      {match?.map((team: Team) => (
-        <Card team={team} onClick={() => handleClick(team)} />
-      ))}
-    </div>
+      </motion.div>
+      <motion.div
+        className={`flex flex-col justify-evenly py-24`}
+        variants={item}
+      >
+        {semiFinals.map((match, i) => (
+          <Match match={match} />
+        ))}
+      </motion.div>
+      <motion.div className={`flex flex-col justify-evenly`} variants={item}>
+        {final.map((match, i) => (
+          <Match match={match} />
+        ))}
+      </motion.div>
+    </motion.div>
   );
 };
 
