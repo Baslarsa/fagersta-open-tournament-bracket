@@ -1,3 +1,4 @@
-** Tournament bracket built with NEXT.js and TailwindCSS **
+***Tournament bracket built with NEXT.js and TailwindCSS***
+
 Run `npm install`
-Run `npm run dev`
+and `npm run dev`
