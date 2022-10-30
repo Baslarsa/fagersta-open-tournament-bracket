@@ -1,7 +1,9 @@
 import Image from "next/image";
+import { getTeam } from "../../lib/getTeam";
 import { MatchData, Team, teams } from "../../lib/types/bracket";
+import H3 from "../Title/H3";
 
-const Card = ({
+const TeamBracketCard = ({
   teamData,
   isWinner,
   className,
@@ -10,11 +12,11 @@ const Card = ({
   isWinner: boolean;
   className?: string;
 }) => {
-  const team = teams.find((t) => t.id === teamData.id) as Team;
+  const team = getTeam(teamData.id);
 
   return (
     <div
-      className={`bg-black flex p-1 ${
+      className={`shadow-xl shadow-gray-800/50 bg-black flex p-1 ${
         isWinner && "border border-cyan-700 transform translate-x-4 scale-110"
       } ${className}`}
     >
@@ -30,9 +32,7 @@ const Card = ({
         />
       </div>
       <div className="flex-1 mx-2 p-2">
-        <h3 className="text-lg tracking-widest font-semibold font-bebas">
-          {team.name}
-        </h3>
+        <H3>{team.name}</H3>
       </div>
       <div
         className={`flex justify-center items-center bg-gray-900 rounded-full w-16 h-16 ${
@@ -45,4 +45,4 @@ const Card = ({
   );
 };
 
-export default Card;
+export default TeamBracketCard;

@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { groupTeams } from "../../lib/generateRandomizedGroups";
-import { bracket, Results, Team } from "../../lib/types/bracket";
 import { motion } from "framer-motion";
+import { matchWinner } from "../../lib/matchWinner";
+import { bracket } from "../../lib/types/bracket";
+import WinnerCard from "../TeamBracketCard/WinnerCard";
 import Match from "./Match";
 
 const container = {
@@ -23,16 +23,19 @@ const BracketGroupContainer = () => {
   const quarterFinals = bracket[0].matches;
   const semiFinals = bracket[1].matches;
   const final = bracket[2].matches;
+  console.log(final);
+  const tournamentWinner = matchWinner({ match: final[0] });
+
   return (
     <motion.div
-      className={`grid grid-cols-4`}
+      className={`grid grid-cols-4 w-full my-4`}
       variants={container}
       initial="hidden"
       animate="show"
     >
       <motion.div className={`flex flex-col justify-evenly`} variants={item}>
         {quarterFinals.map((match, i) => (
-          <Match match={match} />
+          <Match match={match} key={`match--id--${i}`} />
         ))}
       </motion.div>
       <motion.div
@@ -40,13 +43,19 @@ const BracketGroupContainer = () => {
         variants={item}
       >
         {semiFinals.map((match, i) => (
-          <Match match={match} />
+          <Match match={match} key={`match--id--${i}`} />
         ))}
       </motion.div>
       <motion.div className={`flex flex-col justify-evenly`} variants={item}>
         {final.map((match, i) => (
-          <Match match={match} />
+          <Match match={match} key={`match--id--${i}`} />
         ))}
+      </motion.div>
+      <motion.div
+        className={`flex flex-col justify-evenly p-8`}
+        variants={item}
+      >
+        <WinnerCard teamData={tournamentWinner} />
       </motion.div>
     </motion.div>
   );

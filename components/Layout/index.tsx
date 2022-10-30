@@ -1,13 +1,7 @@
 import { ReactNode } from "react";
-import Header from "./Header";
 
 const Layout = ({ children }: { children: ReactNode }) => {
-  return (
-    <div>
-      <Header />
-      {children}
-    </div>
-  );
+  return <div className="h-screen">{children}</div>;
 };
 
 export default Layout;

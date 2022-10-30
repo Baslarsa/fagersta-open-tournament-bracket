@@ -1,9 +1,16 @@
 import BracketGroupContainer from "./BracketGroupContainer";
+import ColumnTitle from "./ColumnTitle";
 
 const BracketBoard = () => {
   return (
-    <div className="p-4 w-full h-full">
-      <div className="">
+    <div className="w-full h-full">
+      <div className="grid grid-cols-4 px-8 bg-black py-2">
+        <ColumnTitle title={"Quarterfinals"} />
+        <ColumnTitle title={"Semifinals"} />
+        <ColumnTitle title={"Final"} />
+        <ColumnTitle title={"Tournament winner"} arrow={false} />
+      </div>
+      <div className="border-red-400 flex">
         <BracketGroupContainer />
       </div>
     </div>
