@@ -27,7 +27,7 @@ const BracketGroupContainer = () => {
 
   return (
     <motion.div
-      className={`grid grid-cols-4 w-full my-4`}
+      className={`max-w-7xl mx-auto grid grid-cols-4 w-full my-4`}
       variants={container}
       initial="hidden"
       animate="show"
