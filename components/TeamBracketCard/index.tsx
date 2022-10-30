@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { getTeam } from "../../lib/getTeam";
-import { MatchData, Team, teams } from "../../lib/types/bracket";
+import { MatchData } from "../../lib/types/bracket";
 import H3 from "../Title/H3";
 
 const TeamBracketCard = ({

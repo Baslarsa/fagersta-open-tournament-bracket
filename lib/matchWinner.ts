@@ -1,11 +1,13 @@
-import { bracket, Match, MatchData, Team } from "./types/bracket";
+import { bracket, Match, MatchData } from "./types/bracket";
 
+//Find the winning team of a match
 export const matchWinner = ({ match }: { match: Match }) => {
   return match.teams.reduce((prev, current) =>
     prev.score > current.score ? prev : current
   );
 };
 
+//Get total score for the whole tournament by Team ID
 export const tournamentStats = (id: number) => {
   let score = 0;
   const allMatches = [

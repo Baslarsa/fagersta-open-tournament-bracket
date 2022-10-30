@@ -1,4 +1,4 @@
-import { Team, teams } from "./types/bracket";
+import { Team } from "./types/bracket";
 
 export type TeamGroups = {
   groupOne: Team[];
@@ -6,6 +6,7 @@ export type TeamGroups = {
   leftOut: Team[] | undefined;
 };
 
+//Functionality to shuffle teams if I were to expand this project with randomizing matches and so on.
 const shuffleTeams = (teams: Team[]) => {
   const array = [...teams];
   let currentIndex = array.length;
@@ -25,6 +26,7 @@ const shuffleTeams = (teams: Team[]) => {
   return array;
 };
 
+// Functionality to group teams in two divisions of a bracket.
 export const groupTeams = (array: Team[], groupSize: number) => {
   // Divide by closest even value if array is uneven.
 
@@ -44,6 +46,7 @@ export const groupTeams = (array: Team[], groupSize: number) => {
   return result;
 };
 
+//Generate two randomized divisions with matchmaking and if uneven numbers, we left one out.
 export const generateRandomizedGroups = (teams: Team[]): TeamGroups | null => {
   if (!teams) {
     console.warn("No teams available");
