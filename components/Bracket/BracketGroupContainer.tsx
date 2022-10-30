@@ -23,7 +23,6 @@ const BracketGroupContainer = () => {
   const quarterFinals = bracket[0].matches;
   const semiFinals = bracket[1].matches;
   const final = bracket[2].matches;
-  console.log(final);
   const tournamentWinner = matchWinner({ match: final[0] });
 
   return (

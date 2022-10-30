@@ -10,7 +10,7 @@ const BracketBoard = () => {
         <ColumnTitle title={"Final"} />
         <ColumnTitle title={"Tournament winner"} arrow={false} />
       </div>
-      <div className="border-red-400 flex">
+      <div className="flex">
         <BracketGroupContainer />
       </div>
     </div>
