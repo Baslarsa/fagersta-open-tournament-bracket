@@ -16,7 +16,7 @@ const TeamBracketCard = ({
 
   return (
     <div
-      className={`shadow-xl shadow-gray-800/50 bg-black flex p-1 ${
+      className={`shadow-xl text-white shadow-gray-800/50 bg-black flex p-1 ${
         isWinner && "border border-cyan-700 transform translate-x-4 scale-110"
       } ${className}`}
     >

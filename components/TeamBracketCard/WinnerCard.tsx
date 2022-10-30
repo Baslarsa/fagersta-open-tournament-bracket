@@ -8,7 +8,7 @@ const WinnerCard = ({ teamData }: { teamData: MatchData }) => {
   const team = getTeam(teamData.id);
   console.log(tournamentStats(teamData.id));
   return (
-    <div className="p-2 m-2 bg-black shadow-xl shadow-gray-800/50">
+    <div className="p-2 m-2 bg-black shadow-xl shadow-gray-800/50 text-white">
       <div className="flex items-center justify-center">
         <div>
           <Image
@@ -23,7 +23,11 @@ const WinnerCard = ({ teamData }: { teamData: MatchData }) => {
         <H3>{team.name}</H3>
         <div className="flex justify-between">
           <p className="uppercase text-gray-500">Total Score:</p>
-          {tournamentStats(team.id)}
+          <div
+            className={`flex justify-center items-center bg-gray-900 rounded-full w-16 h-16 text-cyan-500`}
+          >
+            <p className={`text-3xl p-2`}>{tournamentStats(team.id)}</p>
+          </div>
         </div>
       </div>
     </div>
