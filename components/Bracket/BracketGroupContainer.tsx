@@ -9,7 +9,7 @@ const container = {
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 1,
+      staggerChildren: 0.5,
     },
   },
 };
@@ -40,9 +40,9 @@ const BracketGroupContainer = () => {
           <Match match={match} key={`match--id--${i}`} />
         ))}
       </motion.div>
-      <div className="grid grid-cols-2">
+      <motion.div className="grid grid-cols-2" variants={item}>
         <span
-          className="border-t border-b border-r border-cyblue h-[75%] my-auto flex shadow-md"
+          className="border-t border-b border-r border-cyblue h-[75%] my-auto flex shadow-md rounded-tr-md rounded-br-md"
           style={{ textShadow: "0px 0px 10px #00CEFC" }}
         >
           <span
@@ -51,7 +51,7 @@ const BracketGroupContainer = () => {
           />
         </span>
         <span className="border-t border-b  border-cyblue h-[35%] my-auto flex" />
-      </div>
+      </motion.div>
       <motion.div
         className={`flex flex-col justify-evenly py-24 col-start-5 col-end-8`}
         variants={item}
@@ -60,13 +60,13 @@ const BracketGroupContainer = () => {
           <Match match={match} key={`match--id--${i}`} />
         ))}
       </motion.div>
-      <div className="grid grid-cols-2">
-        <span className="border-t border-b border-r border-cyblue h-[35%] my-auto flex" />
+      <motion.div className="grid grid-cols-2" variants={item}>
+        <span className="border-t border-b border-r border-cyblue h-[35%] my-auto flex rounded-tr-md rounded-br-md" />
         <span
           className="border-t border-b border-r border-cyblue h-[0%] my-auto flex shadow-md"
           style={{ textShadow: "0px 0px 10px #00CEFC" }}
         ></span>
-      </div>
+      </motion.div>
       <motion.div
         className={`flex flex-col justify-evenly col-start-9 col-end-12`}
         variants={item}
