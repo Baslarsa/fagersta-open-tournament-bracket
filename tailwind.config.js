@@ -9,7 +9,11 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        bebas: ["Bebas Neue", ...defaultTheme.fontFamily.sans],
+        bebas: ["Major Mono Display", ...defaultTheme.fontFamily.sans],
+      },
+      colors: {
+        cyblue: "#00CEFC",
+        sunset: "#E77812",
       },
     },
   },

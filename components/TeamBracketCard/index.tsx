@@ -5,41 +5,46 @@ import H3 from "../Title/H3";
 
 const TeamBracketCard = ({
   teamData,
-  isWinner,
   className,
+  reverse,
+  isWinner,
 }: {
   teamData: MatchData;
-  isWinner: boolean;
   className?: string;
+  reverse?: boolean;
+  isWinner: boolean;
 }) => {
   const team = getTeam(teamData.id);
 
   return (
     <div
-      className={`shadow-xl text-white shadow-gray-800/50 bg-black flex p-1 ${
-        isWinner && "border border-cyan-700 transform translate-x-4 scale-110"
-      } ${className}`}
+      className={` text-white inline-flex ${className} ${
+        !isWinner && "saturate-0"
+      } items-start ${reverse && "flex-row-reverse items-end -translate-y-5"}`}
     >
-      <div className="image w-16 h-16 overflow-hidden">
+      <div className="image w-20 h-20 overflow-hidden">
         <Image
-          width={100}
-          height={100}
+          width={200}
+          height={200}
           src={team.imgUrl}
           alt={`team avatar for ${team.name}`}
-          className={`w-full h-full object-cover ${
-            !isWinner && "grayscale opacity-50"
-          }`}
+          className={`object-cover`}
         />
       </div>
-      <div className="flex-1 mx-2 p-2">
-        <H3>{team.name}</H3>
-      </div>
       <div
-        className={`flex justify-center items-center bg-gray-900 rounded-full w-16 h-16 ${
-          isWinner ? "text-cyan-500" : "opacity-40"
-        }`}
+        className={`bg-black flex border border-cyblue/20 ${
+          reverse && "flex-row-reverse transform"
+        } ${isWinner && "border-cyblue/100"} py-2 flex-1 h-auto`}
       >
-        <p className={`text-3xl p-2`}>{teamData.score}</p>
+        <div
+          className="flex-1 flex items-center justify-center uppercase font-bebas text-cyblue"
+          style={{ textShadow: "0px 0px 10px #00CEFC" }}
+        >
+          {team.name}
+        </div>
+        <div className="font-bebas text-3xl px-4 flex justify-center items-center text-sunset">
+          <p style={{ textShadow: "0px 0px 10px #E77812" }}>{teamData.score}</p>
+        </div>
       </div>
     </div>
   );

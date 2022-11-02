@@ -27,34 +27,53 @@ const BracketGroupContainer = () => {
 
   return (
     <motion.div
-      className={`max-w-7xl mx-auto grid grid-cols-4 w-full my-4`}
+      className={`max-w-8xl mx-auto grid grid-cols-12 w-full my-4`}
       variants={container}
       initial="hidden"
       animate="show"
     >
-      <motion.div className={`flex flex-col justify-evenly`} variants={item}>
+      <motion.div
+        className={`flex flex-col justify-evenly col-span-3`}
+        variants={item}
+      >
         {quarterFinals.map((match, i) => (
           <Match match={match} key={`match--id--${i}`} />
         ))}
       </motion.div>
+      <div className="grid grid-cols-2">
+        <span
+          className="border-t border-b border-r border-cyblue h-[75%] my-auto flex shadow-md"
+          style={{ textShadow: "0px 0px 10px #00CEFC" }}
+        >
+          <span
+            className="border-t border-b border-cyblue my-auto h-[35%] w-full p-2"
+            style={{ textShadow: "0px 0px 10px #00CEFC" }}
+          />
+        </span>
+        <span className="border-t border-b  border-cyblue h-[35%] my-auto flex" />
+      </div>
       <motion.div
-        className={`flex flex-col justify-evenly py-24`}
+        className={`flex flex-col justify-evenly py-24 col-start-5 col-end-8`}
         variants={item}
       >
         {semiFinals.map((match, i) => (
           <Match match={match} key={`match--id--${i}`} />
         ))}
       </motion.div>
-      <motion.div className={`flex flex-col justify-evenly`} variants={item}>
+      <div className="grid grid-cols-2">
+        <span className="border-t border-b border-r border-cyblue h-[35%] my-auto flex" />
+        <span
+          className="border-t border-b border-r border-cyblue h-[0%] my-auto flex shadow-md"
+          style={{ textShadow: "0px 0px 10px #00CEFC" }}
+        ></span>
+      </div>
+      <motion.div
+        className={`flex flex-col justify-evenly col-start-9 col-end-12`}
+        variants={item}
+      >
         {final.map((match, i) => (
           <Match match={match} key={`match--id--${i}`} />
         ))}
-      </motion.div>
-      <motion.div
-        className={`flex flex-col justify-evenly p-8`}
-        variants={item}
-      >
-        <WinnerCard teamData={tournamentWinner} />
       </motion.div>
     </motion.div>
   );

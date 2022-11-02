@@ -3,19 +3,20 @@ import { Match, MatchData } from "../../lib/types/bracket";
 import TeamBracketCard from "../TeamBracketCard";
 
 const Match = ({ match }: { match: Match }) => {
+  const isWinner = matchWinner({ match });
   return (
     <div className={`my-2 mx-5 p-0.5 flex flex-col justify-center`}>
-      {match?.teams.map((teamData: MatchData, i) => {
-        const isWinner = matchWinner({ match }) === teamData;
-
-        return (
-          <TeamBracketCard
-            teamData={teamData}
-            isWinner={isWinner}
-            key={`card--id--${teamData.id}`}
-          />
-        );
-      })}
+      <TeamBracketCard
+        teamData={match.teams[0]}
+        key={`card--id--${match.teams[0].id}`}
+        isWinner={isWinner === match.teams[0]}
+      />
+      <TeamBracketCard
+        teamData={match.teams[1]}
+        key={`card--id--${match.teams[0].id}`}
+        reverse={true}
+        isWinner={isWinner === match.teams[1]}
+      />
     </div>
   );
 };
