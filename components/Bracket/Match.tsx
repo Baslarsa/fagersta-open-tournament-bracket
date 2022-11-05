@@ -1,11 +1,11 @@
 import { matchWinner } from "../../lib/matchWinner";
-import { Match, MatchData } from "../../lib/types/bracket";
+import { Match } from "../../lib/types/bracket";
 import TeamBracketCard from "../TeamBracketCard";
 
 const Match = ({ match }: { match: Match }) => {
   const isWinner = matchWinner({ match });
   return (
-    <div className={`my-2 mx-5 p-0.5 flex flex-col justify-center`}>
+    <div className={`my-2 p-0.5 flex flex-col justify-center`}>
       <TeamBracketCard
         teamData={match.teams[0]}
         key={`card--id--${match.teams[0].id}`}

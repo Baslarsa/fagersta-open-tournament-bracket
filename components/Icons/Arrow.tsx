@@ -1,15 +1,20 @@
+import { CSSProperties } from "react";
+
 export const Arrow = ({
   orientation,
   className,
   props,
+  style,
 }: {
   className?: string;
   orientation?: string;
   props?: JSX.ElementAttributesProperty;
+  style?: CSSProperties;
 }) => {
   return (
     <>
       <svg
+        style={style}
         xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"

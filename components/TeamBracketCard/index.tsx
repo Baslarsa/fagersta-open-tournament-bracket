@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { getTeam } from "../../lib/getTeam";
 import { MatchData } from "../../lib/types/bracket";
-import H3 from "../Title/H3";
 
 const TeamBracketCard = ({
   teamData,
@@ -22,7 +21,11 @@ const TeamBracketCard = ({
         !isWinner && "saturate-0"
       } items-start ${reverse && "flex-row-reverse items-end -translate-y-5"}`}
     >
-      <div className="image w-20 h-20 overflow-hidden">
+      <div
+        className={`image w-20 h-20 overflow-hidden ${
+          reverse ? "rounded-br-xl" : "rounded-tl-xl"
+        }`}
+      >
         <Image
           width={200}
           height={200}
@@ -36,13 +39,15 @@ const TeamBracketCard = ({
           reverse && "flex-row-reverse transform"
         } ${isWinner && "border-cyblue/100"} py-2 flex-1 h-auto`}
       >
-        <div
-          className="flex-1 flex items-center justify-center uppercase font-bebas text-cyblue"
-          style={{ textShadow: "0px 0px 10px #00CEFC" }}
-        >
-          {team.name}
+        <div className="flex-1 flex items-center justify-center font-bebas text-cyblue">
+          <p
+            className="font-inconsolata"
+            style={{ textShadow: "0px 0px 5px #00CEFC" }}
+          >
+            {team.name}
+          </p>
         </div>
-        <div className="font-bebas text-3xl px-4 flex justify-center items-center text-sunset">
+        <div className="font-bebas text-3xl px-7 flex justify-center items-center text-sunset">
           <p style={{ textShadow: "0px 0px 10px #E77812" }}>{teamData.score}</p>
         </div>
       </div>

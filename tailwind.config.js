@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       fontFamily: {
         bebas: ["Major Mono Display", ...defaultTheme.fontFamily.sans],
+        inconsolata: ["Inconsolata"],
       },
       colors: {
         cyblue: "#00CEFC",
